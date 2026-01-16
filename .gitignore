@@ -1,0 +1,16 @@
+# dependencies
+node_modules/
+
+# build outputs
+dist/
+storybook-static/
+
+# logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# optional caches (있으면 편함)
+.vite/
