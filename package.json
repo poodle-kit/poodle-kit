@@ -1,65 +1,22 @@
 {
-  "name": "@poodle-kit/core",
+  "name": "poodle-kit-ui",
   "version": "0.1.0",
-  "description": "React UI component library with hooks, utils, and API",
+  "private": true,
+  "description": "React UI component library monorepo",
   "author": "",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/poodle-kit/poodle-kit"
+    "url": "https://github.com/poodle-kit/poodle-kit-ui"
   },
-  "keywords": [
-    "react",
-    "ui",
-    "components",
-    "hooks",
-    "utils",
-    "tailwind"
-  ],
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    },
-    "./ui": {
-      "require": "./dist/ui/index.js",
-      "import": "./dist/ui/index.mjs",
-      "types": "./dist/ui/index.d.ts"
-    },
-    "./hooks": {
-      "require": "./dist/hooks/index.js",
-      "import": "./dist/hooks/index.mjs",
-      "types": "./dist/hooks/index.d.ts"
-    },
-    "./utils": {
-      "require": "./dist/utils/index.js",
-      "import": "./dist/utils/index.mjs",
-      "types": "./dist/utils/index.d.ts"
-    },
-    "./api": {
-      "require": "./dist/api/index.js",
-      "import": "./dist/api/index.mjs",
-      "types": "./dist/api/index.d.ts"
-    },
-    "./styles.css": "./dist/ui/index.css"
-  },
-  "files": [
-    "dist"
+  "workspaces": [
+    "packages/*"
   ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
-    "prepublishOnly": "npm run build",
+    "build": "npm run build --workspaces",
+    "dev": "npm run dev --workspaces",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
-  },
-  "peerDependencies": {
-    "react": ">=18",
-    "react-dom": ">=18"
   },
   "devDependencies": {
     "@storybook/react-vite": "^10.1.11",

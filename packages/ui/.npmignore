@@ -1,0 +1,15 @@
+# Source files
+src
+
+# Config files
+tsconfig.json
+tsup.config.ts
+
+# Development
+*.stories.tsx
+*.test.tsx
+*.test.ts
+
+# Misc
+*.log
+.DS_Store
