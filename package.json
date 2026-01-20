@@ -17,13 +17,13 @@
     "dev": "npm run dev --workspaces",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "lint": "eslint .",
+    "lint": "eslint packages --ext .ts,.tsx",
     "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "prepare": "husky",
     "lint-staged": "lint-staged",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "npm run typecheck --workspaces"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",

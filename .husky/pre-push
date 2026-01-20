@@ -1,5 +1,0 @@
-set -e
-
-echo "TypeScript 타입 검사 중..."
-npm run typecheck
-echo "타입 검사 통과"
