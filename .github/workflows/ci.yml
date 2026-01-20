@@ -1,0 +1,47 @@
+name: CI
+
+# Run CI on all PRs and pushes to main/dev
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+
+jobs:
+  ci:
+    name: Build & Verify
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Node LTS + npm cache
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # Install from lockfile
+      - name: Install
+        run: npm ci
+
+      # Code quality checks
+      - name: Lint
+        run: npm run lint
+
+      # Formatting rules
+      - name: Format check
+        run: npm run format:check
+
+      # Type safety
+      - name: Typecheck
+        run: npm run typecheck
+
+      # Package build
+      - name: Build
+        run: npm run build
+
+      # Storybook build
+      - name: Build Storybook
+        run: npm run build-storybook
