@@ -102,8 +102,8 @@ npm publish --access public
 
 - [npm Organization](https://www.npmjs.com/org/poodle-kit)
 - [GitHub Repository](https://github.com/poodle-kit/poodle-kit)
-- [Docs]()
+- 문서 사이트 배포는 추후 진행 예정이에요
 
 ## 📄 라이선스
 
-MIT
+MIT 라이센스를 따르고 있어요
