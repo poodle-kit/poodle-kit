@@ -13,6 +13,8 @@ jobs:
       # 1. 소스 코드 가져오기
       - name: 🔄 Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 전체 히스토리 가져오기 (Chromatic 용도)
 
       # 2. Node 환경 설정
       - name: 🟢 Setup Node.js
