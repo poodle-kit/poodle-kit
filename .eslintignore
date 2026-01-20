@@ -1,0 +1,31 @@
+# Node modules
+
+node_modules/
+
+# Build outputs
+
+dist/
+.next/
+.turbo/
+build/
+out/
+storybook-static/
+
+# Tool-generated JSON only
+
+package-lock.json
+tsconfig.tsbuildinfo
+
+# Test coverage
+
+coverage/
+
+# Temporary files
+
+\*.log
+.DS_Store
+
+# Internal config packages (not lint targets)
+
+packages/eslint-config/**
+packages/tsconfig/**
