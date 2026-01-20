@@ -27,8 +27,8 @@ pnpm install @poodle-kit/ui
 ### 사용하기
 
 ```tsx
-import { Button } from "@poodle-kit/ui";
-import "@poodle-kit/ui/styles.css";
+import { Button } from '@poodle-kit/ui';
+import '@poodle-kit/ui/styles.css';
 
 function App() {
   return <Button label="클릭해주세요" variant="primary" size="md" />;
