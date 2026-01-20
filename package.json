@@ -1,5 +1,5 @@
 {
-  "name": "poodle-kit-ui",
+  "name": "poodle-kit",
   "version": "0.1.0",
   "private": true,
   "description": "React UI component library monorepo",
@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/poodle-kit/poodle-kit-ui"
+    "url": "git+https://github.com/poodle-kit/poodle-kit.git"
   },
   "workspaces": [
     "packages/*"
