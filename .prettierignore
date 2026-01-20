@@ -1,0 +1,11 @@
+# Prettier ignore patterns
+
+# Lock files
+package-lock.json
+
+# Build outputs
+dist/
+storybook-static/
+
+# Dependencies
+node_modules/
