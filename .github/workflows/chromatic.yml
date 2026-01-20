@@ -5,6 +5,10 @@ on:
     branches: [main, dev]
   pull_request:
 
+permissions:
+  contents: read
+  pull_requests: write
+
 jobs:
   chromatic:
     runs-on: ubuntu-latest
