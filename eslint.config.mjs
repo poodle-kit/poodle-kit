@@ -5,7 +5,24 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import prettierConfig from 'eslint-config-prettier';
 
 export default [
-  { ignores: ['dist/**', 'storybook-static/**', 'node_modules/**'] },
+  {
+    ignores: [
+      'node_modules/**',
+      'dist/**',
+      '.next/**',
+      '.turbo/**',
+      'build/**',
+      'out/**',
+      'storybook-static/**',
+      'package-lock.json',
+      'tsconfig.tsbuildinfo',
+      'coverage/**',
+      '*.log',
+      '.DS_Store',
+      'packages/eslint-config/**',
+      'packages/tsconfig/**',
+    ],
+  },
 
   js.configs.recommended,
 
