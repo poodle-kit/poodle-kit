@@ -1,0 +1,26 @@
+# Source files
+src
+
+# Config files
+.storybook
+tsconfig.json
+tsup.config.ts
+postcss.config.mjs
+
+# Development
+node_modules
+*.stories.tsx
+*.test.tsx
+*.test.ts
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+
+# Misc
+*.log
+.DS_Store
