@@ -1,14 +1,15 @@
-import type { ButtonHTMLAttributes } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 type Variant = "primary" | "secondary" | "ghost" | "danger";
 type Size = "sm" | "md" | "lg";
 
 export type ButtonProps = {
-  label: string;
+  label?: string;
+  children?: ReactNode;
   variant?: Variant;
   size?: Size;
   fullWidth?: boolean;
-} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children">;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const base =
   "inline-flex items-center justify-center rounded-lg font-semibold " +
@@ -39,6 +40,7 @@ function cx(...classes: Array<string | undefined | false>) {
 
 export function Button({
   label,
+  children,
   variant = "primary",
   size = "md",
   fullWidth = false,
@@ -57,7 +59,7 @@ export function Button({
       )}
       {...rest}
     >
-      {label}
+      {children || label}
     </button>
   );
 }
