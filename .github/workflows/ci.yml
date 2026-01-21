@@ -1,0 +1,48 @@
+name: 🧪 CI
+
+# 모든 PR과 main/dev 브랜치 push 시 CI 실행
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+
+jobs:
+  ci:
+    name: Build & Verify
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 레포지토리 소스 코드 체크아웃
+      - name: 🔄 Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Node.js LTS 환경 설정 + npm 캐시 활성화
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # 3. package-lock.json 기준으로 의존성 설치
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      # 4. ESLint를 통한 코드 품질 검사
+      - name: 🔍 Run ESLint
+        run: npm run lint
+
+      # 5. Prettier 포맷 규칙 검사
+      - name: 🎯 Check formatting
+        run: npm run format:check
+
+      # 6. TypeScript 타입 안정성 검사
+      - name: 🧠 Type check
+        run: npm run typecheck
+
+      # 7. 패키지 빌드 검증
+      - name: 🏗️ Build packages
+        run: npm run build
+
+      # 8. Storybook 빌드 검증
+      - name: 📚 Build Storybook
+        run: npm run build-storybook

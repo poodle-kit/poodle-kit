@@ -52,14 +52,14 @@ const MyButton: React.FC<ButtonProps> = (props) => {
 
 #### Props
 
-| Prop | 타입 | 기본값 | 설명 |
-|------|------|---------|-------------|
-| `label` | `string` | - | 버튼에 표시될 텍스트 **(필수)** |
-| `variant` | `"primary" \| "secondary" \| "ghost" \| "danger"` | `"primary"` | 버튼의 스타일 종류 |
-| `size` | `"sm" \| "md" \| "lg"` | `"md"` | 버튼의 크기 |
-| `fullWidth` | `boolean` | `false` | 버튼을 전체 너비로 만들기 |
-| `disabled` | `boolean` | `false` | 버튼 비활성화하기 |
-| `onClick` | `() => void` | - | 클릭 이벤트 핸들러 |
+| Prop        | 타입                                              | 기본값      | 설명                            |
+| ----------- | ------------------------------------------------- | ----------- | ------------------------------- |
+| `label`     | `string`                                          | -           | 버튼에 표시될 텍스트 **(필수)** |
+| `variant`   | `"primary" \| "secondary" \| "ghost" \| "danger"` | `"primary"` | 버튼의 스타일 종류              |
+| `size`      | `"sm" \| "md" \| "lg"`                            | `"md"`      | 버튼의 크기                     |
+| `fullWidth` | `boolean`                                         | `false`     | 버튼을 전체 너비로 만들기       |
+| `disabled`  | `boolean`                                         | `false`     | 버튼 비활성화하기               |
+| `onClick`   | `() => void`                                      | -           | 클릭 이벤트 핸들러              |
 
 일반적인 HTML button 속성들도 모두 사용할 수 있어요.
 
@@ -107,10 +107,7 @@ import '@poodle-kit/ui/styles.css';
 className을 통해 추가 스타일을 적용할 수 있어요:
 
 ```tsx
-<Button
-  label="커스텀"
-  className="my-custom-class"
-/>
+<Button label="커스텀" className="my-custom-class" />
 ```
 
 ## 🔧 TypeScript 지원

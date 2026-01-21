@@ -1,0 +1,8 @@
+echo "병합 완료: 의존성 변경 여부 확인 중..."
+
+if git diff --name-only ORIG_HEAD HEAD | grep -E "(package\.json|package-lock\.json)" > /dev/null; then
+  echo "의존성 파일(package.json/package-lock.json)이 변경되었습니다."
+  echo "필요하면 npm ci (또는 npm install)를 실행하세요."
+else
+  echo "의존성 변경 없음"
+fi
