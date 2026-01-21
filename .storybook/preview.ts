@@ -1,5 +1,5 @@
-import "../packages/ui/src/tailwind.css";
-import type { Preview } from "@storybook/react-vite";
+import '../packages/ui/src/tailwind.css';
+import type { Preview } from '@storybook/react-vite';
 
 const preview: Preview = {
   parameters: {

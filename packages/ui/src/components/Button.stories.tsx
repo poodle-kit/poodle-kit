@@ -1,17 +1,22 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "./Button";
+import type { Meta, StoryObj } from '@storybook/react';
+import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
-  title: "Components/Button",
+  title: 'Components/Button',
   component: Button,
-  parameters: { layout: "centered" },
-  args: { label: "Button", variant: "primary", size: "md", disabled: false },
+  parameters: { layout: 'centered' },
+  args: {
+    label: 'Button',
+    variant: 'primary',
+    size: 'md',
+    disabled: false,
+  },
   argTypes: {
     variant: {
-      control: "radio",
-      options: ["primary", "secondary", "ghost", "danger"],
+      control: 'radio',
+      options: ['primary', 'secondary', 'ghost', 'danger'],
     },
-    size: { control: "radio", options: ["sm", "md", "lg"] },
+    size: { control: 'radio', options: ['sm', 'md', 'lg'] },
   },
 };
 
@@ -42,5 +47,5 @@ export const Sizes: Story = {
 };
 
 export const Disabled: Story = {
-  args: { disabled: true, label: "Disabled" },
+  args: { disabled: true, label: 'Disabled' },
 };
