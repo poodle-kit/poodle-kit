@@ -1,0 +1,53 @@
+name: 📚 Storybook (Chromatic)
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  chromatic:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 소스 코드 가져오기
+      - name: 🔄 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 전체 히스토리 가져오기 (Chromatic 용도)
+
+      # 2. Node 환경 설정
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # 3. 의존성 설치 (lockfile 기준)
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      # 4. Storybook 빌드 + Chromatic 업로드
+      - name: 🎨 Build & publish Storybook
+        id: chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          buildScriptName: build-storybook
+          exitOnceUploaded: true
+
+      # 5. GitHub Actions Summary에 결과 요약 출력
+      # CI 실행 결과를 한눈에 볼 수 있도록 표 형태로 정리
+      - name: 📊 Publish Storybook summary
+        run: |
+          echo "## 🎨 Storybook (Chromatic) 결과" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| 항목 | 내용 |" >> $GITHUB_STEP_SUMMARY
+          echo "| --- | --- |" >> $GITHUB_STEP_SUMMARY
+          echo "| 빌드 결과 | ${{ steps.chromatic.outputs.buildUrl }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Storybook 미리보기 | ${{ steps.chromatic.outputs.storybookUrl }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 컴포넌트 수 | ${{ steps.chromatic.outputs.componentCount }} |" >> $GITHUB_STEP_SUMMARY
