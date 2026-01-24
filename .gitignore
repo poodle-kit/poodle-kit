@@ -12,5 +12,11 @@ storybook-static/
 .DS_Store
 Thumbs.db
 
-# optional caches (있으면 편함)
+# Turborepo
+.turbo
+
+# pnpm
+.pnpm-debug.log
+
+# optional caches
 .vite/
