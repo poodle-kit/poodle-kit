@@ -20,18 +20,33 @@ jobs:
         with:
           fetch-depth: 0 # 전체 히스토리 가져오기 (Chromatic 용도)
 
-      # 2. Node 환경 설정
+      # 2. pnpm 설치
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      # 3. Node 환경 설정 + pnpm 캐시 활성화
       - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
+          cache: pnpm
 
-      # 3. 의존성 설치 (lockfile 기준)
+      # 4. 의존성 설치 (lockfile 기준)
       - name: 📦 Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
-      # 4. Storybook 빌드 + Chromatic 업로드
+      # 5. Turborepo 캐시 설정
+      - name: ⚡ Setup Turborepo cache
+        uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+
+      # 6. Storybook 빌드 + Chromatic 업로드
       - name: 🎨 Build & publish Storybook
         id: chromatic
         uses: chromaui/action@v1
@@ -40,7 +55,7 @@ jobs:
           buildScriptName: build-storybook
           exitOnceUploaded: true
 
-      # 5. GitHub Actions Summary에 결과 요약 출력
+      # 7. GitHub Actions Summary에 결과 요약 출력
       # CI 실행 결과를 한눈에 볼 수 있도록 표 형태로 정리
       - name: 📊 Publish Storybook summary
         run: |
