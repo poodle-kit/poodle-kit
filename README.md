@@ -40,7 +40,7 @@ function App() {
 ### 필요한 것들
 
 - Node.js >= 18
-- pnpm >= 8 (추천)
+- pnpm >= 10 (권장)
 
 ### 시작하기
 

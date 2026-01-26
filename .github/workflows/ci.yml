@@ -20,7 +20,7 @@ jobs:
       - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 10
 
       # 3. Node.js LTS 환경 설정 + pnpm 캐시 활성화
       - name: 🟢 Setup Node.js

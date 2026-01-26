@@ -5,6 +5,7 @@
   "description": "React UI component library monorepo",
   "author": "",
   "license": "MIT",
+  "packageManager": "pnpm@10.24.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/poodle-kit/poodle-kit.git"
