@@ -24,13 +24,13 @@ const sizes: Record<Size, string> = {
 
 const variants: Record<Variant, string> = {
   primary:
-    'bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-600 shadow-sm',
+    'bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-ring shadow-sm',
   secondary:
-    'bg-gray-100 text-gray-900 hover:bg-gray-200 focus-visible:ring-gray-400 border border-gray-200',
+    'bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-visible:ring-ring border border-border',
   ghost:
-    'bg-transparent text-gray-900 hover:bg-gray-100 focus-visible:ring-gray-400',
+    'bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring',
   danger:
-    'bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-600 shadow-sm',
+    'bg-destructive text-destructive-foreground hover:bg-destructive/90 focus-visible:ring-ring shadow-sm',
 };
 
 // className 합치기(외부 라이브러리 없이)
