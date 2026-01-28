@@ -29,8 +29,10 @@
     "dist"
   ],
   "scripts": {
+    "generate:theme": "tsx scripts/generate-theme.ts",
+    "prebuild": "pnpm generate:theme",
     "build": "tsup",
-    "dev": "tsup --watch",
+    "dev": "pnpm generate:theme && tsup --watch",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
