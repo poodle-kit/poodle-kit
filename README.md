@@ -40,20 +40,33 @@ function App() {
 ### 필요한 것들
 
 - Node.js >= 18
-- npm >= 9
+- pnpm >= 10 (권장)
 
 ### 시작하기
 
 ```bash
-# 의존성 설치하기
-npm install
+# pnpm 설치 (전역)
+npm install -g pnpm
 
-# 모든 패키지 빌드하기
-npm run build
+# 의존성 설치하기
+pnpm install
+
+# 모든 패키지 빌드하기 (Turborepo 캐싱)
+pnpm build
+
+# Watch 모드로 개발하기
+pnpm dev
 
 # Storybook 실행하기
-npm run storybook
+pnpm storybook
 ```
+
+### 주요 도구
+
+- 🚀 **Turborepo** - 빌드 캐싱 및 병렬 처리
+- 📦 **pnpm** - 빠르고 효율적인 패키지 매니저
+- 🎨 **Tailwind CSS** - 유틸리티 기반 CSS 프레임워크
+- 📚 **Storybook** - 컴포넌트 개발 환경
 
 ### 프로젝트 구조
 
@@ -75,17 +88,32 @@ poodle-kit/
 ## 📝 스크립트
 
 ```bash
-# 모든 패키지 빌드하기
-npm run build
+# 모든 패키지 빌드하기 (Turborepo 캐싱)
+pnpm build
 
 # Watch 모드로 개발하기 (모든 패키지)
-npm run dev
+pnpm dev
+
+# 타입 체크
+pnpm typecheck
+
+# Lint 검사
+pnpm lint
+
+# Lint 자동 수정
+pnpm lint:fix
+
+# 코드 포맷팅
+pnpm format
 
 # Storybook 실행하기
-npm run storybook
+pnpm storybook
 
 # Storybook 빌드하기
-npm run build-storybook
+pnpm build-storybook
+
+# 캐시 및 node_modules 정리
+pnpm clean
 ```
 
 ## 🚢 배포하기
@@ -94,7 +122,14 @@ npm run build-storybook
 
 ```bash
 cd packages/ui
+
+# 빌드
+pnpm build
+
+# 버전 업데이트
 npm version patch  # 또는 minor, major
+
+# 배포
 npm publish --access public
 ```
 
