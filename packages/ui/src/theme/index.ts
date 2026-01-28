@@ -1,6 +1,5 @@
 export { ThemeProvider } from './provider';
 export { useTheme } from './use-theme';
-export { defaultTheme } from './tokens/presets/default';
 export type {
   Theme,
   ThemeColors,
@@ -10,3 +9,14 @@ export type {
   CustomThemeDefinition,
 } from './types';
 export { defineTheme } from './types';
+export {
+  themeToCssVars,
+  applyCssVars,
+  removeCssVars,
+  formatCssVars,
+  generateThemeCss,
+} from './theme-to-css-vars';
+export {
+  defaultLightTheme,
+  defaultDarkTheme,
+} from './defaults/default';

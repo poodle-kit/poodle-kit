@@ -57,6 +57,11 @@ export interface ThemeProviderProps {
   children: React.ReactNode;
   defaultTheme?: Theme;
   storageKey?: string;
+  /** Custom theme configuration for light mode */
+  config?: ThemeConfig;
+  /** Custom theme configuration for dark mode */
+  darkConfig?: ThemeConfig;
+  /** Legacy: Custom theme definitions (deprecated, use config instead) */
   customThemes?: Record<string, CustomThemeDefinition>;
   enableColorSchemeSync?: boolean;
 }

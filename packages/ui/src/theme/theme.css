@@ -1,12 +1,81 @@
 /**
- * Theme Entry Point
+ * Default Theme Tokens
  *
- * All themes are auto-generated from TypeScript presets.
- * DO NOT edit theme.generated.css manually.
+ * These are fallback values when no custom theme is provided.
+ * Users should override these by passing `config` and `darkConfig` to ThemeProvider.
  *
- * To customize themes:
- * 1. Edit TypeScript preset files in packages/ui/src/theme/tokens/presets/
- * 2. Run: pnpm generate:theme
+ * @example
+ * ```tsx
+ * import { ThemeProvider, defineTheme } from '@poodle-kit/ui';
+ *
+ * const myTheme = defineTheme({
+ *   colors: {
+ *     primary: { DEFAULT: 'oklch(0.5 0.2 250)', foreground: 'oklch(1 0 0)' }
+ *   }
+ * });
+ *
+ * <ThemeProvider config={myTheme} darkConfig={myDarkTheme}>
+ *   <App />
+ * </ThemeProvider>
+ * ```
  */
 
-@import './theme.generated.css';
+@import 'tailwindcss';
+
+/* ==================== Light Mode (Default) ==================== */
+
+@theme {
+  --color-background: oklch(1 0 0);
+  --color-foreground: oklch(0.09 0 0);
+  --color-primary: oklch(0.09 0 0);
+  --color-primary-foreground: oklch(0.98 0 0);
+  --color-secondary: oklch(0.96 0 0);
+  --color-secondary-foreground: oklch(0.09 0 0);
+  --color-muted: oklch(0.96 0 0);
+  --color-muted-foreground: oklch(0.45 0 0);
+  --color-accent: oklch(0.96 0 0);
+  --color-accent-foreground: oklch(0.09 0 0);
+  --color-destructive: oklch(0.576 0.204 27.325);
+  --color-destructive-foreground: oklch(0.98 0 0);
+  --color-border: oklch(0.90 0 0);
+  --color-input: oklch(0.90 0 0);
+  --color-ring: oklch(0.09 0 0);
+  --radius-none: 0;
+  --radius-sm: 0.125rem;
+  --radius-base: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-full: 9999px;
+}
+
+/* ==================== Dark Mode ==================== */
+
+.dark {
+  --color-background: oklch(0.09 0 0);
+  --color-foreground: oklch(0.98 0 0);
+  --color-primary: oklch(0.98 0 0);
+  --color-primary-foreground: oklch(0.09 0 0);
+  --color-secondary: oklch(0.17 0 0);
+  --color-secondary-foreground: oklch(0.98 0 0);
+  --color-muted: oklch(0.17 0 0);
+  --color-muted-foreground: oklch(0.65 0 0);
+  --color-accent: oklch(0.17 0 0);
+  --color-accent-foreground: oklch(0.98 0 0);
+  --color-destructive: oklch(0.701 0.191 29.234);
+  --color-destructive-foreground: oklch(0.98 0 0);
+  --color-border: oklch(0.27 0 0);
+  --color-input: oklch(0.27 0 0);
+  --color-ring: oklch(0.98 0 0);
+  --radius-none: 0;
+  --radius-sm: 0.125rem;
+  --radius-base: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-full: 9999px;
+}

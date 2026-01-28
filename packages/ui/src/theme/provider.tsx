@@ -1,9 +1,15 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useEffect,
+  useState,
+  useMemo,
+} from 'react';
 import type {
   Theme,
   ThemeProviderProps,
   ThemeProviderState,
 } from './types';
+import { themeToCssVars, applyCssVars } from './theme-to-css-vars';
 
 export const ThemeContext = createContext<
   ThemeProviderState | undefined
@@ -13,6 +19,8 @@ export function ThemeProvider({
   children,
   defaultTheme = 'system',
   storageKey = 'poodle-ui-theme',
+  config,
+  darkConfig,
   customThemes = {},
   enableColorSchemeSync = true,
 }: ThemeProviderProps) {
@@ -28,6 +36,17 @@ export function ThemeProvider({
       return defaultTheme;
     }
   });
+
+  // Convert theme configs to CSS variables (memoized)
+  const lightCssVars = useMemo(
+    () => (config ? themeToCssVars(config) : null),
+    [config],
+  );
+
+  const darkCssVars = useMemo(
+    () => (darkConfig ? themeToCssVars(darkConfig) : null),
+    [darkConfig],
+  );
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -57,14 +76,26 @@ export function ThemeProvider({
       root.style.colorScheme = isDark ? 'dark' : 'light';
     }
 
-    if (customThemes[actualTheme]?.cssVars) {
+    // Apply custom theme config (priority: config > customThemes)
+    if (actualTheme === 'light' && lightCssVars) {
+      applyCssVars(root, lightCssVars);
+    } else if (actualTheme === 'dark' && darkCssVars) {
+      applyCssVars(root, darkCssVars);
+    } else if (customThemes[actualTheme]?.cssVars) {
+      // Legacy support for customThemes
       Object.entries(customThemes[actualTheme].cssVars!).forEach(
         ([key, value]) => {
           root.style.setProperty(key, value);
         },
       );
     }
-  }, [theme, customThemes, enableColorSchemeSync]);
+  }, [
+    theme,
+    lightCssVars,
+    darkCssVars,
+    customThemes,
+    enableColorSchemeSync,
+  ]);
 
   useEffect(() => {
     if (theme !== 'system') return;

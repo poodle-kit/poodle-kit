@@ -1,7 +1,12 @@
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
-  entry: ['src/index.ts'],
+  entry: [
+    'src/index.ts',
+    'src/components/button/button.tsx',
+    'src/theme/index.ts',
+    'src/lib/cn.ts',
+  ],
   format: ['cjs', 'esm'],
   dts: true,
   splitting: false,
@@ -11,4 +16,5 @@ export default defineConfig({
   loader: {
     '.css': 'css',
   },
+  onSuccess: 'cp -r src/theme/*.css dist/theme/',
 });
