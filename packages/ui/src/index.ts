@@ -1,15 +1,9 @@
 // Tailwind CSS
 import './tailwind.css';
 
-// Components (Styled by default)
-export {
-  StyledButton as Button,
-  buttonVariants,
-} from './components/button';
-export type {
-  StyledButtonProps as ButtonProps,
-  ButtonProps as HeadlessButtonProps,
-} from './components/button';
+// Components
+export { Button, buttonVariants } from './components/button';
+export type { ButtonProps } from './components/button';
 
 // Theme
 export {

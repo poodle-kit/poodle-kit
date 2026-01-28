@@ -23,11 +23,6 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
-    "./headless": {
-      "types": "./dist/components/button/button.d.ts",
-      "import": "./dist/components/button/button.mjs",
-      "require": "./dist/components/button/button.js"
-    },
     "./theme": {
       "types": "./dist/theme/index.d.ts",
       "import": "./dist/theme/index.mjs",

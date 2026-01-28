@@ -1,6 +1,1 @@
-export { Button, type ButtonProps } from './button';
-export {
-  StyledButton,
-  buttonVariants,
-  type StyledButtonProps,
-} from './button-styled';
+export { Button, buttonVariants, type ButtonProps } from './button';

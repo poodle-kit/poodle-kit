@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { StyledButton } from './button-styled';
+import { Button } from './button';
 
-const meta: Meta<typeof StyledButton> = {
+const meta: Meta<typeof Button> = {
   title: 'Components/Button',
-  component: StyledButton,
+  component: Button,
   parameters: { layout: 'centered' },
   args: {
     children: 'Button',
@@ -31,31 +31,31 @@ const meta: Meta<typeof StyledButton> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof StyledButton>;
+type Story = StoryObj<typeof Button>;
 
 export const Playground: Story = {};
 
 export const Variants: Story = {
   render: (args) => (
     <div className="flex flex-wrap gap-3">
-      <StyledButton {...args} variant="default">
+      <Button {...args} variant="default">
         Default
-      </StyledButton>
-      <StyledButton {...args} variant="secondary">
+      </Button>
+      <Button {...args} variant="secondary">
         Secondary
-      </StyledButton>
-      <StyledButton {...args} variant="ghost">
+      </Button>
+      <Button {...args} variant="ghost">
         Ghost
-      </StyledButton>
-      <StyledButton {...args} variant="destructive">
+      </Button>
+      <Button {...args} variant="destructive">
         Destructive
-      </StyledButton>
-      <StyledButton {...args} variant="outline">
+      </Button>
+      <Button {...args} variant="outline">
         Outline
-      </StyledButton>
-      <StyledButton {...args} variant="link">
+      </Button>
+      <Button {...args} variant="link">
         Link
-      </StyledButton>
+      </Button>
     </div>
   ),
 };
@@ -63,15 +63,15 @@ export const Variants: Story = {
 export const Sizes: Story = {
   render: (args) => (
     <div className="flex items-center gap-3">
-      <StyledButton {...args} size="sm">
+      <Button {...args} size="sm">
         Small
-      </StyledButton>
-      <StyledButton {...args} size="default">
+      </Button>
+      <Button {...args} size="default">
         Default
-      </StyledButton>
-      <StyledButton {...args} size="lg">
+      </Button>
+      <Button {...args} size="lg">
         Large
-      </StyledButton>
+      </Button>
     </div>
   ),
 };
@@ -79,7 +79,7 @@ export const Sizes: Story = {
 export const WithIcon: Story = {
   render: (args) => (
     <div className="flex items-center gap-3">
-      <StyledButton {...args} size="icon">
+      <Button {...args} size="icon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -94,8 +94,8 @@ export const WithIcon: Story = {
           <path d="M5 12h14" />
           <path d="m12 5 7 7-7 7" />
         </svg>
-      </StyledButton>
-      <StyledButton {...args}>
+      </Button>
+      <Button {...args}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -111,16 +111,16 @@ export const WithIcon: Story = {
           <path d="M5 12h14" />
         </svg>
         With Icon
-      </StyledButton>
+      </Button>
     </div>
   ),
 };
 
 export const AsChild: Story = {
   render: () => (
-    <StyledButton asChild>
+    <Button asChild>
       <a href="https://github.com">Link as Button</a>
-    </StyledButton>
+    </Button>
   ),
 };
 
