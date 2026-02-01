@@ -1,32 +1,39 @@
 export type Theme = 'light' | 'dark' | 'system' | string;
 
+export type ColorValue =
+  | string
+  | {
+      DEFAULT: string;
+      foreground: string;
+    };
+
 export interface ThemeColors {
-  background: string;
-  foreground: string;
-  primary: {
-    DEFAULT: string;
-    foreground: string;
-  };
-  secondary: {
-    DEFAULT: string;
-    foreground: string;
-  };
-  muted: {
-    DEFAULT: string;
-    foreground: string;
-  };
-  accent: {
-    DEFAULT: string;
-    foreground: string;
-  };
-  destructive: {
-    DEFAULT: string;
-    foreground: string;
-  };
-  border: string;
-  input: string;
-  ring: string;
-  [key: string]: string | { DEFAULT: string; foreground: string };
+  // Page & Container colors
+  background?: ColorValue;
+  foreground?: ColorValue;
+  muted?: ColorValue;
+  accent?: ColorValue;
+  card?: ColorValue;
+  popover?: ColorValue;
+
+  // Brand & Action colors
+  primary?: ColorValue;
+  secondary?: ColorValue;
+
+  // Semantic colors
+  info?: ColorValue;
+  danger?: ColorValue;
+  warning?: ColorValue;
+  success?: ColorValue;
+  destructive?: ColorValue;
+
+  // Border & Input colors
+  border?: ColorValue;
+  input?: ColorValue;
+  ring?: ColorValue;
+
+  // Custom colors
+  [key: string]: ColorValue | undefined;
 }
 
 export interface ThemeConfig {

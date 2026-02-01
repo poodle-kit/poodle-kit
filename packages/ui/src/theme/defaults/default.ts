@@ -41,20 +41,13 @@ import { defineTheme } from '../types';
 
 /**
  * Default Light Theme
- * Clean neutral design with black primary color
+ * Clean neutral design with semantic color tokens
  */
 export const defaultLightTheme = defineTheme({
   colors: {
-    background: 'oklch(1 0 0)',
-    foreground: 'oklch(0.09 0 0)',
-
-    primary: {
-      DEFAULT: 'oklch(0.09 0 0)',
-      foreground: 'oklch(0.98 0 0)',
-    },
-
-    secondary: {
-      DEFAULT: 'oklch(0.96 0 0)',
+    // Page & Container colors
+    background: {
+      DEFAULT: 'oklch(1 0 0)',
       foreground: 'oklch(0.09 0 0)',
     },
 
@@ -68,11 +61,49 @@ export const defaultLightTheme = defineTheme({
       foreground: 'oklch(0.09 0 0)',
     },
 
-    destructive: {
+    card: {
+      DEFAULT: 'oklch(1 0 0)',
+      foreground: 'oklch(0.09 0 0)',
+    },
+
+    popover: {
+      DEFAULT: 'oklch(1 0 0)',
+      foreground: 'oklch(0.09 0 0)',
+    },
+
+    // Brand & Action colors
+    primary: {
+      DEFAULT: 'oklch(0.09 0 0)',
+      foreground: 'oklch(0.98 0 0)',
+    },
+
+    secondary: {
+      DEFAULT: 'oklch(0.45 0 0)',
+      foreground: 'oklch(0.98 0 0)',
+    },
+
+    // Semantic colors
+    info: {
+      DEFAULT: 'oklch(0.55 0.15 250)',
+      foreground: 'oklch(0.98 0 0)',
+    },
+
+    danger: {
       DEFAULT: 'oklch(0.576 0.204 27.325)',
       foreground: 'oklch(0.98 0 0)',
     },
 
+    warning: {
+      DEFAULT: 'oklch(0.75 0.15 75)',
+      foreground: 'oklch(0.09 0 0)',
+    },
+
+    success: {
+      DEFAULT: 'oklch(0.60 0.15 145)',
+      foreground: 'oklch(0.98 0 0)',
+    },
+
+    // Border & Input colors
     border: 'oklch(0.90 0 0)',
     input: 'oklch(0.90 0 0)',
     ring: 'oklch(0.09 0 0)',
@@ -93,20 +124,13 @@ export const defaultLightTheme = defineTheme({
 
 /**
  * Default Dark Theme
- * Clean neutral design with white primary color
+ * Clean neutral design with semantic color tokens
  */
 export const defaultDarkTheme = defineTheme({
   colors: {
-    background: 'oklch(0.09 0 0)',
-    foreground: 'oklch(0.98 0 0)',
-
-    primary: {
-      DEFAULT: 'oklch(0.98 0 0)',
-      foreground: 'oklch(0.09 0 0)',
-    },
-
-    secondary: {
-      DEFAULT: 'oklch(0.17 0 0)',
+    // Page & Container colors
+    background: {
+      DEFAULT: 'oklch(0.09 0 0)',
       foreground: 'oklch(0.98 0 0)',
     },
 
@@ -120,11 +144,49 @@ export const defaultDarkTheme = defineTheme({
       foreground: 'oklch(0.98 0 0)',
     },
 
-    destructive: {
-      DEFAULT: 'oklch(0.701 0.191 29.234)',
+    card: {
+      DEFAULT: 'oklch(0.09 0 0)',
       foreground: 'oklch(0.98 0 0)',
     },
 
+    popover: {
+      DEFAULT: 'oklch(0.09 0 0)',
+      foreground: 'oklch(0.98 0 0)',
+    },
+
+    // Brand & Action colors
+    primary: {
+      DEFAULT: 'oklch(0.98 0 0)',
+      foreground: 'oklch(0.09 0 0)',
+    },
+
+    secondary: {
+      DEFAULT: 'oklch(0.65 0 0)',
+      foreground: 'oklch(0.09 0 0)',
+    },
+
+    // Semantic colors
+    info: {
+      DEFAULT: 'oklch(0.65 0.15 250)',
+      foreground: 'oklch(0.09 0 0)',
+    },
+
+    danger: {
+      DEFAULT: 'oklch(0.701 0.191 29.234)',
+      foreground: 'oklch(0.09 0 0)',
+    },
+
+    warning: {
+      DEFAULT: 'oklch(0.80 0.15 75)',
+      foreground: 'oklch(0.09 0 0)',
+    },
+
+    success: {
+      DEFAULT: 'oklch(0.70 0.15 145)',
+      foreground: 'oklch(0.09 0 0)',
+    },
+
+    // Border & Input colors
     border: 'oklch(0.27 0 0)',
     input: 'oklch(0.27 0 0)',
     ring: 'oklch(0.98 0 0)',

@@ -17,8 +17,11 @@ const meta: Meta<typeof Button> = {
       options: [
         'default',
         'secondary',
+        'info',
+        'danger',
+        'warning',
+        'success',
         'ghost',
-        'destructive',
         'outline',
         'link',
       ],
@@ -44,11 +47,20 @@ export const Variants: Story = {
       <Button {...args} variant="secondary">
         Secondary
       </Button>
+      <Button {...args} variant="info">
+        Info
+      </Button>
+      <Button {...args} variant="danger">
+        Danger
+      </Button>
+      <Button {...args} variant="warning">
+        Warning
+      </Button>
+      <Button {...args} variant="success">
+        Success
+      </Button>
       <Button {...args} variant="ghost">
         Ghost
-      </Button>
-      <Button {...args} variant="destructive">
-        Destructive
       </Button>
       <Button {...args} variant="outline">
         Outline
