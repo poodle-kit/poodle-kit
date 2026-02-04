@@ -1,0 +1,110 @@
+/**
+ * Default Theme Tokens
+ *
+ * These are fallback values when no custom theme is provided.
+ * Users should override these by passing `config` and `darkConfig` to ThemeProvider.
+ *
+ * @example
+ * ```tsx
+ * import { ThemeProvider, defineTheme } from '@poodle-kit/ui';
+ *
+ * const myTheme = defineTheme({
+ *   colors: {
+ *     primary: { DEFAULT: 'oklch(0.5 0.2 250)', foreground: 'oklch(1 0 0)' }
+ *   }
+ * });
+ *
+ * <ThemeProvider config={myTheme} darkConfig={myDarkTheme}>
+ *   <App />
+ * </ThemeProvider>
+ * ```
+ */
+
+@import 'tailwindcss';
+
+/* ==================== Light Mode (Default) ==================== */
+
+@theme {
+  /* Page & Container colors */
+  --color-background: oklch(1 0 0);
+  --color-background-foreground: oklch(0.09 0 0);
+  --color-foreground: oklch(0.09 0 0);
+  --color-muted: oklch(0.96 0 0);
+  --color-muted-foreground: oklch(0.45 0 0);
+  --color-accent: oklch(0.96 0 0);
+  --color-accent-foreground: oklch(0.09 0 0);
+  --color-card: oklch(1 0 0);
+  --color-card-foreground: oklch(0.09 0 0);
+  --color-popover: oklch(1 0 0);
+  --color-popover-foreground: oklch(0.09 0 0);
+
+  /* Brand & Action colors */
+  --color-primary: oklch(0.09 0 0);
+  --color-primary-foreground: oklch(0.98 0 0);
+  --color-secondary: oklch(0.45 0 0);
+  --color-secondary-foreground: oklch(0.98 0 0);
+
+  /* Semantic colors */
+  --color-info: oklch(0.55 0.15 250);
+  --color-info-foreground: oklch(0.98 0 0);
+  --color-danger: oklch(0.576 0.204 27.325);
+  --color-danger-foreground: oklch(0.98 0 0);
+  --color-warning: oklch(0.75 0.15 75);
+  --color-warning-foreground: oklch(0.09 0 0);
+  --color-success: oklch(0.60 0.15 145);
+  --color-success-foreground: oklch(0.98 0 0);
+
+  /* Border & Input colors */
+  --color-border: oklch(0.90 0 0);
+  --color-input: oklch(0.90 0 0);
+  --color-ring: oklch(0.09 0 0);
+
+  /* Radius */
+  --radius-none: 0;
+  --radius-sm: 0.125rem;
+  --radius-base: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-full: 9999px;
+}
+
+/* ==================== Dark Mode ==================== */
+
+.dark {
+  /* Page & Container colors */
+  --color-background: oklch(0.09 0 0);
+  --color-background-foreground: oklch(0.98 0 0);
+  --color-foreground: oklch(0.98 0 0);
+  --color-muted: oklch(0.17 0 0);
+  --color-muted-foreground: oklch(0.65 0 0);
+  --color-accent: oklch(0.17 0 0);
+  --color-accent-foreground: oklch(0.98 0 0);
+  --color-card: oklch(0.09 0 0);
+  --color-card-foreground: oklch(0.98 0 0);
+  --color-popover: oklch(0.09 0 0);
+  --color-popover-foreground: oklch(0.98 0 0);
+
+  /* Brand & Action colors */
+  --color-primary: oklch(0.98 0 0);
+  --color-primary-foreground: oklch(0.09 0 0);
+  --color-secondary: oklch(0.65 0 0);
+  --color-secondary-foreground: oklch(0.09 0 0);
+
+  /* Semantic colors */
+  --color-info: oklch(0.65 0.15 250);
+  --color-info-foreground: oklch(0.09 0 0);
+  --color-danger: oklch(0.701 0.191 29.234);
+  --color-danger-foreground: oklch(0.09 0 0);
+  --color-warning: oklch(0.80 0.15 75);
+  --color-warning-foreground: oklch(0.09 0 0);
+  --color-success: oklch(0.70 0.15 145);
+  --color-success-foreground: oklch(0.09 0 0);
+
+  /* Border & Input colors */
+  --color-border: oklch(0.27 0 0);
+  --color-input: oklch(0.27 0 0);
+  --color-ring: oklch(0.98 0 0);
+}

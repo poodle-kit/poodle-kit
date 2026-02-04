@@ -23,7 +23,18 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
-    "./styles.css": "./dist/index.css"
+    "./theme": {
+      "types": "./dist/theme/index.d.ts",
+      "import": "./dist/theme/index.mjs",
+      "require": "./dist/theme/index.js"
+    },
+    "./utils": {
+      "types": "./dist/lib/cn.d.ts",
+      "import": "./dist/lib/cn.mjs",
+      "require": "./dist/lib/cn.js"
+    },
+    "./styles.css": "./dist/index.css",
+    "./theme.css": "./dist/theme/theme.css"
   },
   "files": [
     "dist"
@@ -44,5 +55,11 @@
     "react-dom": "^18.2.0",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.2.4",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.4.0"
   }
 }
