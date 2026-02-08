@@ -17,9 +17,6 @@
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {
-    "framer-motion": "^11.0.0"
-  },
   "peerDependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
@@ -28,5 +25,8 @@
     "@types/react": "^18.3.27",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "motion": "^12.33.0"
   }
 }
