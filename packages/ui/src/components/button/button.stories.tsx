@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { motion } from 'motion/react';
 import { Button } from './button';
 
 const meta: Meta<typeof Button> = {
@@ -138,4 +139,49 @@ export const AsChild: Story = {
 
 export const Disabled: Story = {
   args: { disabled: true, children: 'Disabled' },
+};
+
+/** Press 애니메이션 적용 버튼 */
+export const WithPressAnimation: Story = {
+  render: (args) => (
+    <motion.div
+      whileTap={{ scale: 0.95 }}
+      transition={{ duration: 0.1 }}
+      style={{ display: 'inline-block' }}
+    >
+      <Button {...args}>눌러보세요</Button>
+    </motion.div>
+  ),
+};
+
+/** 다양한 버튼에 Press 애니메이션 적용 */
+export const PressAnimationVariants: Story = {
+  render: () => (
+    <div className="flex flex-wrap gap-3">
+      <motion.div
+        whileTap={{ scale: 0.95 }}
+        style={{ display: 'inline-block' }}
+      >
+        <Button variant="default">Default</Button>
+      </motion.div>
+      <motion.div
+        whileTap={{ scale: 0.95 }}
+        style={{ display: 'inline-block' }}
+      >
+        <Button variant="secondary">Secondary</Button>
+      </motion.div>
+      <motion.div
+        whileTap={{ scale: 0.95 }}
+        style={{ display: 'inline-block' }}
+      >
+        <Button variant="danger">Danger</Button>
+      </motion.div>
+      <motion.div
+        whileTap={{ scale: 0.95 }}
+        style={{ display: 'inline-block' }}
+      >
+        <Button variant="outline">Outline</Button>
+      </motion.div>
+    </div>
+  ),
 };
