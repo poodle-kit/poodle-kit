@@ -111,16 +111,16 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {leftIcon && (
             <button
               type="button"
-              disabled={disabled || !onLeftIconClick}
+              disabled={!onLeftIconClick}
               aria-label="left icon"
               className={cn(
                 'absolute left-3 top-1/2 z-10 -translate-y-1/2',
-                onLeftIconClick && !disabled
+                onLeftIconClick
                   ? 'cursor-pointer'
                   : 'pointer-events-none cursor-default',
                 disabled && 'opacity-50',
               )}
-              onClick={() => !disabled && onLeftIconClick?.()}
+              onClick={onLeftIconClick}
             >
               {leftIcon}
             </button>
@@ -147,16 +147,16 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {rightIcon && (
             <button
               type="button"
-              disabled={disabled || !onRightIconClick}
+              disabled={!onRightIconClick}
               aria-label="right icon"
               className={cn(
                 'absolute right-3 top-1/2 z-10 -translate-y-1/2',
-                onRightIconClick && !disabled
+                onRightIconClick
                   ? 'cursor-pointer'
                   : 'pointer-events-none cursor-default',
                 disabled && 'opacity-50',
               )}
-              onClick={() => !disabled && onRightIconClick?.()}
+              onClick={onRightIconClick}
             >
               {rightIcon}
             </button>
