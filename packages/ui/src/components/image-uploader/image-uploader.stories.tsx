@@ -225,7 +225,7 @@ export const HeadlessHookUsage: Story = {
     // 실제 코드에서는 useImageUploader를 직접 import해서 사용해요:
     // import { useImageUploader } from '@poodle-kit/ui';
     return (
-      <div className="p-4 rounded-[var(--radius-lg)] border border-border bg-muted">
+      <div className="p-4 rounded-lg border border-border bg-muted">
         <p className="text-sm text-muted-foreground mb-2">
           <code className="text-xs bg-background px-1 py-0.5 rounded">
             useImageUploader

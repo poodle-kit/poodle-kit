@@ -109,9 +109,9 @@ function AddButton({
       disabled={disabled}
       aria-label={`이미지 추가 (${current}/${max})`}
       className={cn(
-        'flex-shrink-0 w-20 h-20',
+        'shrink-0 w-20 h-20',
         'flex flex-col items-center justify-center gap-1',
-        'rounded-[var(--radius-lg)]',
+        'rounded-lg',
         'border-2 border-dashed border-border',
         'bg-muted text-muted-foreground',
         'cursor-pointer select-none',
@@ -142,12 +142,12 @@ interface ImageItemProps {
 
 function ImageItem({ src, alt, onRemove, disabled }: ImageItemProps) {
   return (
-    <div className="relative flex-shrink-0 w-20 h-20 group/item">
+    <div className="relative shrink-0 w-20 h-20 group/item">
       <img
         src={src}
         alt={alt}
         draggable={false}
-        className="w-full h-full object-cover rounded-[var(--radius-lg)]"
+        className="w-full h-full object-cover rounded-lg"
       />
       {!disabled && (
         <button
@@ -261,7 +261,7 @@ export const ImageUploader = forwardRef<
           aria-label={`이미지 업로더, ${totalCount}/${maxImages}개 선택됨`}
           className={cn(
             imageUploaderVariants({ layout }),
-            'rounded-[var(--radius-lg)] p-1 -ml-1',
+            'rounded-lg p-1 -ml-1',
             'transition-all duration-200',
             isDragActive &&
               'ring-2 ring-primary ring-offset-2 bg-primary/5',
