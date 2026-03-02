@@ -4,56 +4,13 @@ import { forwardRef, useId } from 'react';
 import type { ReactNode } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/cn';
+import { PlusIcon, XIcon } from '../../icons';
 import {
   useImageUploader,
   type ExistingImage,
   type NewImageFile,
   type UseImageUploaderOptions,
 } from './use-image-uploader';
-
-// ─── Inline Icons (no external dependency) ───────────────────────────────────
-
-function PlusIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M5 12h14" />
-      <path d="M12 5v14" />
-    </svg>
-  );
-}
-
-function XIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="12"
-      height="12"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M18 6 6 18" />
-      <path d="m6 6 12 12" />
-    </svg>
-  );
-}
 
 // ─── CVA Variants ─────────────────────────────────────────────────────────────
 
@@ -168,7 +125,7 @@ function ImageItem({ src, alt, onRemove, disabled }: ImageItemProps) {
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1',
           )}
         >
-          <XIcon />
+          <XIcon strokeWidth="2.5" />
         </button>
       )}
     </div>
