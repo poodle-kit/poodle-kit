@@ -1,4 +1,6 @@
 import { defineConfig } from 'tsup';
+import { copyFileSync, mkdirSync, existsSync } from 'fs';
+import { join } from 'path';
 
 export default defineConfig({
   entry: [
@@ -17,5 +19,12 @@ export default defineConfig({
   loader: {
     '.css': 'css',
   },
-  onSuccess: 'cp -r src/theme/*.css dist/theme/',
+  onSuccess: async () => {
+    const destDir = join('dist', 'theme');
+    if (!existsSync(destDir)) mkdirSync(destDir, { recursive: true });
+    copyFileSync(
+      join('src', 'theme', 'theme.css'),
+      join(destDir, 'theme.css'),
+    );
+  },
 });

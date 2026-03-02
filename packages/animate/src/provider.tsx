@@ -1,6 +1,7 @@
 'use client';
 
 import { AnimateContext } from './context';
+import { formPreset } from './presets/form';
 import { pressPreset } from './presets/press';
 import type { AnimatePreset } from './presets/types';
 
@@ -13,9 +14,12 @@ const noop = ({ children }: { children: React.ReactNode }) => (
  * 프리셋 이름 → 실제 슬롯 매핑
  * 새 프리셋 추가 시 여기에 등록
  */
+const defaults = { Root: noop, Message: noop };
+
 const PRESETS = {
-  none: { Root: noop },
-  press: pressPreset,
+  none: defaults,
+  press: { ...defaults, ...pressPreset },
+  form: { ...defaults, ...formPreset },
 };
 
 /**

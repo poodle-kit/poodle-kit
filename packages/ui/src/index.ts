@@ -6,10 +6,22 @@ export { Button, buttonVariants } from './components/button';
 export type { ButtonProps } from './components/button';
 
 export {
+  Input,
+  inputVariants,
+  InputMessage,
+} from './components/input';
+
+export type {
+  InputProps,
+  InputMessageProps,
+} from './components/input';
+
+export {
   ImageUploader,
   imageUploaderVariants,
   useImageUploader,
 } from './components/image-uploader';
+
 export type {
   ImageUploaderProps,
   ExistingImage,
