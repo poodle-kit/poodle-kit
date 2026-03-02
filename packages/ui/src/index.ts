@@ -10,10 +10,26 @@ export {
   inputVariants,
   InputMessage,
 } from './components/input';
+
 export type {
   InputProps,
   InputMessageProps,
 } from './components/input';
+
+export {
+  ImageUploader,
+  imageUploaderVariants,
+  useImageUploader,
+} from './components/image-uploader';
+
+export type {
+  ImageUploaderProps,
+  ExistingImage,
+  NewImageFile,
+  UseImageUploaderOptions,
+  UseImageUploaderReturn,
+  ImageUploaderError,
+} from './components/image-uploader';
 
 // Theme
 export {

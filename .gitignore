@@ -20,3 +20,6 @@ Thumbs.db
 
 # optional caches
 .vite/
+
+## AI
+CLAUDE.md
