@@ -4,6 +4,7 @@ export default defineConfig({
   entry: [
     'src/index.ts',
     'src/components/button/button.tsx',
+    'src/components/image-uploader/image-uploader.tsx',
     'src/theme/index.ts',
     'src/lib/cn.ts',
   ],

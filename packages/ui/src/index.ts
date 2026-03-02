@@ -5,6 +5,20 @@ import './tailwind.css';
 export { Button, buttonVariants } from './components/button';
 export type { ButtonProps } from './components/button';
 
+export {
+  ImageUploader,
+  imageUploaderVariants,
+  useImageUploader,
+} from './components/image-uploader';
+export type {
+  ImageUploaderProps,
+  ExistingImage,
+  NewImageFile,
+  UseImageUploaderOptions,
+  UseImageUploaderReturn,
+  ImageUploaderError,
+} from './components/image-uploader';
+
 // Theme
 export {
   ThemeProvider,
