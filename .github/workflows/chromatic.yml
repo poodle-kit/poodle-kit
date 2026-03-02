@@ -44,7 +44,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-turbo-
 
-      # 6. Storybook 빌드 + Chromatic 업로드
+      # 6. 패키지 빌드 (Storybook에서 import하는 패키지 사전 빌드)
+      - name: 🔨 Build packages
+        run: pnpm build
+
+      # 7. Storybook 빌드 + Chromatic 업로드
       - name: 🎨 Build & publish Storybook
         id: chromatic
         uses: chromaui/action@v1
@@ -53,7 +57,7 @@ jobs:
           buildScriptName: build-storybook
           exitOnceUploaded: true
 
-      # 7. GitHub Actions Summary에 결과 요약 출력
+      # 8. GitHub Actions Summary에 결과 요약 출력
       # CI 실행 결과를 한눈에 볼 수 있도록 표 형태로 정리
       - name: 📊 Publish Storybook summary
         run: |

@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { motion } from 'motion/react';
+import { withAnimate } from '@poodle-kit/animate';
 import { Button } from './button';
+
+/** press 프리셋 적용 — withAnimate HOC */
+const PressButton = withAnimate(Button, 'press');
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -141,47 +144,19 @@ export const Disabled: Story = {
   args: { disabled: true, children: 'Disabled' },
 };
 
-/** Press 애니메이션 적용 버튼 */
+/** press 프리셋 — withAnimate HOC로 눌림 애니메이션 적용 */
 export const WithPressAnimation: Story = {
-  render: (args) => (
-    <motion.div
-      whileTap={{ scale: 0.95 }}
-      transition={{ duration: 0.1 }}
-      style={{ display: 'inline-block' }}
-    >
-      <Button {...args}>눌러보세요</Button>
-    </motion.div>
-  ),
+  render: (args) => <PressButton {...args}>눌러보세요</PressButton>,
 };
 
-/** 다양한 버튼에 Press 애니메이션 적용 */
+/** 다양한 variant에 press 프리셋 적용 */
 export const PressAnimationVariants: Story = {
   render: () => (
     <div className="flex flex-wrap gap-3">
-      <motion.div
-        whileTap={{ scale: 0.95 }}
-        style={{ display: 'inline-block' }}
-      >
-        <Button variant="default">Default</Button>
-      </motion.div>
-      <motion.div
-        whileTap={{ scale: 0.95 }}
-        style={{ display: 'inline-block' }}
-      >
-        <Button variant="secondary">Secondary</Button>
-      </motion.div>
-      <motion.div
-        whileTap={{ scale: 0.95 }}
-        style={{ display: 'inline-block' }}
-      >
-        <Button variant="danger">Danger</Button>
-      </motion.div>
-      <motion.div
-        whileTap={{ scale: 0.95 }}
-        style={{ display: 'inline-block' }}
-      >
-        <Button variant="outline">Outline</Button>
-      </motion.div>
+      <PressButton variant="default">Default</PressButton>
+      <PressButton variant="secondary">Secondary</PressButton>
+      <PressButton variant="danger">Danger</PressButton>
+      <PressButton variant="outline">Outline</PressButton>
     </div>
   ),
 };

@@ -6,6 +6,7 @@ import { createContext } from 'react';
  */
 type AnimateSlots = {
   Root: React.FC<{ children: React.ReactNode }>;
+  Message: React.FC<{ children: React.ReactNode }>;
 };
 
 /** 애니메이션 없이 children만 반환하는 기본 래퍼 */
@@ -20,4 +21,5 @@ const noop = ({ children }: { children: React.ReactNode }) => (
  */
 export const AnimateContext = createContext<AnimateSlots>({
   Root: noop,
+  Message: noop,
 });
