@@ -47,5 +47,15 @@ export type {
   ThemeProviderProps,
 } from './theme';
 
+// Toast
+export { toast, Toaster } from './components/toast';
+export type {
+  Toast,
+  ToastOptions,
+  ToastType,
+  ToastPosition,
+  ToasterProps,
+} from './components/toast';
+
 // Utils
 export { cn } from './lib/cn';
