@@ -17,7 +17,6 @@
 
 import { useCallback, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
-import { AnimatePresence } from 'motion/react';
 import { cn } from '../../lib/cn';
 import { store } from './store';
 import { ToastItem } from './toast-item';
@@ -85,15 +84,13 @@ export function Toaster({
         positionClasses[position],
       )}
     >
-      <AnimatePresence initial={false}>
-        {visibleToasts.map((t) => (
-          <ToastItem
-            key={t.id}
-            toast={t}
-            defaultDuration={defaultDuration}
-          />
-        ))}
-      </AnimatePresence>
+      {visibleToasts.map((t) => (
+        <ToastItem
+          key={t.id}
+          toast={t}
+          defaultDuration={defaultDuration}
+        />
+      ))}
     </div>,
     body,
   );

@@ -52,8 +52,12 @@ export const store = {
     };
   },
 
-  /** 현재 toasts 복사본 반환 (useState 초기값용) */
+  /**
+   * 현재 toasts 참조 반환.
+   * addToast/removeToast는 항상 새 배열로 교체하므로 참조가 안정적이다.
+   * useSyncExternalStore의 getSnapshot으로 사용 시 같은 참조를 반환해야 무한 루프가 발생하지 않음.
+   */
   getToasts(): Toast[] {
-    return [...toasts];
+    return toasts;
   },
 };

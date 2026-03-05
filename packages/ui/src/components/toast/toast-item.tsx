@@ -10,13 +10,16 @@
  * - description이 있으면 제목 아래에 작은 글씨로 표시
  * - dismissible=true 일 때만 닫기 버튼 노출
  *
+ * 애니메이션: CSS @keyframes (motion 의존성 없음)
+ *   - 마운트: animate-toast-enter (theme.css에 정의)
+ *   - 언마운트: exiting 상태 → animate-toast-exit → 300ms 후 store에서 제거
+ *
  * 스타일링: shadcn/sonner rich-colors 방식
  *   - bg-{type}/15 + text-{type} + border-{type}/25
  *   - default는 bg-background 사용
  */
 
-import { useEffect } from 'react';
-import { motion } from 'motion/react';
+import { useCallback, useEffect, useState } from 'react';
 import { cva } from 'class-variance-authority';
 import { cn } from '../../lib/cn';
 import { store } from './store';
@@ -150,6 +153,18 @@ export function ToastItem({
     dismissible,
   } = toast;
 
+  // exiting=true → CSS exit 애니메이션 재생 → 300ms 후 store에서 제거
+  const [exiting, setExiting] = useState(false);
+
+  const dismiss = useCallback(() => setExiting(true), []);
+
+  // exit 애니메이션이 끝난 뒤 실제로 store에서 제거
+  useEffect(() => {
+    if (!exiting) return;
+    const timer = setTimeout(() => store.removeToast(id), 300);
+    return () => clearTimeout(timer);
+  }, [exiting, id]);
+
   // 자동 소멸 타이머
   // 마운트 시점에 이미 경과한 시간을 빼고 남은 시간만큼만 대기한다.
   // → maxToasts 초과로 숨겨졌다가 다시 보여지는 경우에도 정확히 만료됨
@@ -157,29 +172,22 @@ export function ToastItem({
     if (!duration || duration === Infinity) return;
     const elapsed = Date.now() - toast.createdAt;
     const remaining = Math.max(0, duration - elapsed);
-    const timer = setTimeout(() => store.removeToast(id), remaining);
-    return () => clearTimeout(timer); // unmount 시 타이머 정리
-  }, [id, duration, toast.createdAt]);
+    const timer = setTimeout(dismiss, remaining);
+    return () => clearTimeout(timer);
+  }, [id, duration, toast.createdAt, dismiss]);
 
   // 좌측 아이콘: icon prop 우선, 없으면 타입 아이콘
   const leftIcon = icon ?? typeIcons[type as ToastType];
 
   return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, y: 8, scale: 0.96 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{
-        opacity: 0,
-        y: 8,
-        scale: 0.96,
-        transition: { duration: 0.3 },
-      }}
-      transition={{ duration: 0.2, ease: 'easeOut' }}
+    <div
       role="alert"
       aria-live="assertive"
       aria-atomic="true"
-      className={cn(toastVariants({ type: type as ToastType }))}
+      className={cn(
+        toastVariants({ type: type as ToastType }),
+        exiting ? 'animate-toast-exit' : 'animate-toast-enter',
+      )}
     >
       {/* 좌측 아이콘 */}
       {leftIcon && <span className="shrink-0 mt-px">{leftIcon}</span>}
@@ -199,7 +207,7 @@ export function ToastItem({
         <button
           type="button"
           aria-label="닫기"
-          onClick={() => store.removeToast(id)}
+          onClick={dismiss}
           className="shrink-0 mt-px opacity-50 hover:opacity-100 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <svg
@@ -218,6 +226,6 @@ export function ToastItem({
           </svg>
         </button>
       )}
-    </motion.div>
+    </div>
   );
 }
