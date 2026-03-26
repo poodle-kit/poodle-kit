@@ -3,6 +3,32 @@ import './tailwind.css';
 
 // Components
 export { Button, buttonVariants } from './components/button';
+
+export {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  selectTriggerVariants,
+  SelectContent,
+  selectContentVariants,
+  SelectItem,
+  SelectItemIndicator,
+  SelectGroup,
+  SelectLabel,
+  SelectSeparator,
+} from './components/select';
+
+export type {
+  SelectProps,
+  SelectTriggerProps,
+  SelectValueProps,
+  SelectContentProps,
+  SelectItemProps,
+  SelectItemIndicatorProps,
+  SelectGroupProps,
+  SelectLabelProps,
+  SelectSeparatorProps,
+} from './components/select';
 export type { ButtonProps } from './components/button';
 
 export {

@@ -1,0 +1,138 @@
+import { forwardRef, useEffect, type ReactNode } from 'react';
+import { useListItem, useMergeRefs } from '@floating-ui/react';
+import { cn } from '../../lib/cn';
+import { useSelectContext } from './select';
+
+/* -------------------------------------------------------------------------------------------------
+ * SelectItem
+ * -----------------------------------------------------------------------------------------------*/
+
+export interface SelectItemProps extends React.HTMLAttributes<HTMLDivElement> {
+  value: string;
+  disabled?: boolean;
+  /** 트리거에 표시할 텍스트. children이 string이 아닐 때 사용 */
+  textValue?: string;
+  children: ReactNode;
+}
+
+const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(
+  (
+    { value, disabled, textValue, children, className, ...props },
+    forwardedRef,
+  ) => {
+    const ctx = useSelectContext('SelectItem');
+
+    const displayLabel =
+      textValue ?? (typeof children === 'string' ? children : value);
+    const { ref: listItemRef, index } = useListItem({
+      label: disabled ? null : displayLabel,
+    });
+    const ref = useMergeRefs([listItemRef, forwardedRef]);
+
+    const isActive = ctx.activeIndex === index;
+    const isSelected = ctx.value === value;
+
+    // 선택된 아이템이 마운트되면 selectedIndex와 selectedLabel을 동기화
+    useEffect(() => {
+      if (isSelected) {
+        ctx.setSelectedIndex(index);
+        ctx.setSelectedLabel(displayLabel);
+      }
+    }, [isSelected, index, displayLabel]);
+
+    const handleSelect = () => {
+      if (disabled) return;
+      ctx.onValueChange(value);
+      ctx.setSelectedIndex(index);
+      ctx.setSelectedLabel(displayLabel);
+      ctx.onOpenChange(false);
+    };
+
+    return (
+      <div
+        ref={ref}
+        role="option"
+        aria-selected={isSelected}
+        aria-disabled={disabled || undefined}
+        tabIndex={isActive ? 0 : -1}
+        data-highlighted={isActive ? '' : undefined}
+        data-selected={isSelected ? '' : undefined}
+        data-disabled={disabled ? '' : undefined}
+        className={cn(
+          'relative flex cursor-default select-none items-center rounded-sm',
+          ' py-1.5 pl-8 pr-2 text-sm outline-none',
+          'data-highlighted:bg-accent data-highlighted:text-accent-foreground',
+          'data-disabled:pointer-events-none data-disabled:opacity-50',
+          className,
+        )}
+        {...ctx.getItemProps({
+          ...props,
+          onClick: handleSelect,
+          onKeyDown: (e: React.KeyboardEvent<HTMLDivElement>) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              handleSelect();
+            }
+            props.onKeyDown?.(e);
+          },
+        })}
+      >
+        <SelectItemIndicator isSelected={isSelected} />
+        {children}
+      </div>
+    );
+  },
+);
+
+SelectItem.displayName = 'SelectItem';
+
+/* -------------------------------------------------------------------------------------------------
+ * SelectItemIndicator
+ * -----------------------------------------------------------------------------------------------*/
+
+export interface SelectItemIndicatorProps {
+  isSelected?: boolean;
+  className?: string;
+}
+
+function SelectItemIndicator({
+  isSelected,
+  className,
+}: SelectItemIndicatorProps) {
+  return (
+    <span
+      className={cn(
+        'absolute left-2 flex h-3.5 w-3.5 items-center justify-center',
+        className,
+      )}
+    >
+      {isSelected && <CheckIcon className="h-4 w-4" />}
+    </span>
+  );
+}
+
+SelectItemIndicator.displayName = 'SelectItemIndicator';
+
+/* -------------------------------------------------------------------------------------------------
+ * CheckIcon (inline SVG)
+ * -----------------------------------------------------------------------------------------------*/
+
+function CheckIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <polyline points="20 6 9 18 4 13" />
+    </svg>
+  );
+}
+
+export { SelectItem, SelectItemIndicator };
