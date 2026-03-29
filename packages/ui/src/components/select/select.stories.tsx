@@ -352,3 +352,173 @@ export const ManyItems: Story = {
     </Select>
   ),
 };
+
+/* -------------------------------------------------------------------------------------------------
+ * EdgePositioning — 화면 모서리에서 flip/shift 동작 확인
+ * 각 트리거를 viewport 모서리 근처에 배치해서 드롭다운이 밀려나는지 확인
+ * -----------------------------------------------------------------------------------------------*/
+
+const EDGE_ITEMS = [
+  'Option A',
+  'Option B',
+  'Option C',
+  'Option D',
+  'Option E',
+];
+
+function EdgeSelect({ label }: { label: string }) {
+  return (
+    <Select>
+      <SelectTrigger className="w-36">
+        <SelectValue placeholder={label} />
+      </SelectTrigger>
+      <SelectContent>
+        {EDGE_ITEMS.map((item) => (
+          <SelectItem key={item} value={item}>
+            {item}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
+  );
+}
+
+export const EdgePositioning: Story = {
+  parameters: { layout: 'fullscreen' },
+  render: () => (
+    <div className="relative w-screen h-screen">
+      {/* 좌상단 */}
+      <div className="absolute top-2 left-2">
+        <EdgeSelect label="좌상단" />
+      </div>
+      {/* 우상단 */}
+      <div className="absolute top-2 right-2">
+        <EdgeSelect label="우상단" />
+      </div>
+      {/* 좌하단 */}
+      <div className="absolute bottom-2 left-2">
+        <EdgeSelect label="좌하단" />
+      </div>
+      {/* 우하단 */}
+      <div className="absolute bottom-2 right-2">
+        <EdgeSelect label="우하단" />
+      </div>
+      {/* 중앙 하단 — flip 확인 */}
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2">
+        <EdgeSelect label="하단 중앙" />
+      </div>
+      <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-muted-foreground text-center">
+        각 모서리의 Select를 열어서
+        <br />
+        드롭다운 방향이 자동 조정되는지 확인
+      </p>
+    </div>
+  ),
+};
+
+/* -------------------------------------------------------------------------------------------------
+ * MobileViewport — 375px 너비에서 드롭다운이 잘리지 않는지 확인
+ * -----------------------------------------------------------------------------------------------*/
+
+export const MobileViewport: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    viewport: { defaultViewport: 'mobile1' }, // 375×667
+  },
+  render: () => (
+    <div className="flex flex-col gap-4 p-4 h-screen">
+      {/* 상단 — 아래로 열려야 함 */}
+      <div>
+        <p className="text-xs text-muted-foreground mb-1">
+          상단 (아래로 열림)
+        </p>
+        <Select>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="옵션 선택..." />
+          </SelectTrigger>
+          <SelectContent>
+            {EDGE_ITEMS.map((item) => (
+              <SelectItem key={item} value={item}>
+                {item}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
+      {/* 하단 — 위로 flip 되어야 함 */}
+      <div className="mt-auto">
+        <p className="text-xs text-muted-foreground mb-1">
+          하단 (위로 flip)
+        </p>
+        <Select>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="옵션 선택..." />
+          </SelectTrigger>
+          <SelectContent>
+            {EDGE_ITEMS.map((item) => (
+              <SelectItem key={item} value={item}>
+                {item}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+    </div>
+  ),
+};
+
+/* -------------------------------------------------------------------------------------------------
+ * ScrollContainer — 스크롤 컨테이너 안에서 위치 재계산 확인
+ * -----------------------------------------------------------------------------------------------*/
+
+export const ScrollContainer: Story = {
+  parameters: { layout: 'centered' },
+  render: () => (
+    <div
+      className="border border-input rounded-md overflow-y-auto"
+      style={{ height: 300, width: 320 }}
+    >
+      <div
+        className="flex flex-col gap-3 p-4"
+        style={{ height: 800 }}
+      >
+        <p className="text-xs text-muted-foreground">
+          드롭다운은 FloatingPortal로 컨테이너 밖(body)에 렌더돼요.
+          {'\n'}
+          스크롤 후 열었을 때 트리거 위치에 정확히 붙는지 확인하세요.
+        </p>
+        {/* 상단 */}
+        <Select>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="상단 Select" />
+          </SelectTrigger>
+          <SelectContent>
+            {EDGE_ITEMS.map((item) => (
+              <SelectItem key={item} value={item}>
+                {item}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+
+        {/* 중간 여백 */}
+        <div style={{ height: 260 }} />
+
+        {/* 하단 */}
+        <Select>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="하단 Select" />
+          </SelectTrigger>
+          <SelectContent>
+            {EDGE_ITEMS.map((item) => (
+              <SelectItem key={item} value={item}>
+                {item}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+    </div>
+  ),
+};

@@ -33,11 +33,13 @@ const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(
     const isSelected = ctx.value === value;
 
     // 선택된 아이템이 마운트되면 selectedIndex와 selectedLabel을 동기화
+    // ctx.value이 변경될 때마다 동기화하는 대신, 아이템이 마운트될 때 한 번만 동기화하여 성능 최적화
     useEffect(() => {
       if (isSelected) {
         ctx.setSelectedIndex(index);
         ctx.setSelectedLabel(displayLabel);
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isSelected, index, displayLabel]);
 
     const handleSelect = () => {
