@@ -1,6 +1,7 @@
 import { forwardRef, useEffect, type ReactNode } from 'react';
 import { useListItem, useMergeRefs } from '@floating-ui/react';
 import { cn } from '../../lib/cn';
+import { CheckIcon } from '../../icons';
 import { useSelectContext } from './select';
 
 /* -------------------------------------------------------------------------------------------------
@@ -114,27 +115,5 @@ function SelectItemIndicator({
 }
 
 SelectItemIndicator.displayName = 'SelectItemIndicator';
-
-/* -------------------------------------------------------------------------------------------------
- * CheckIcon (inline SVG)
- * -----------------------------------------------------------------------------------------------*/
-
-function CheckIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className={className}
-    >
-      <polyline points="20 6 9 18 4 13" />
-    </svg>
-  );
-}
 
 export { SelectItem, SelectItemIndicator };

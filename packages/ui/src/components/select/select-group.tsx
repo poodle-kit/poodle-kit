@@ -51,6 +51,7 @@ SelectGroup.displayName = 'SelectGroup';
 
 /* -------------------------------------------------------------------------------------------------
  * SelectLabel
+ * 옵션 그룹의 레이블을 표시하는 컴포넌트입니다.
  * -----------------------------------------------------------------------------------------------*/
 
 export interface SelectLabelProps extends React.HTMLAttributes<HTMLDivElement> {

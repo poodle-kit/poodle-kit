@@ -2,6 +2,7 @@ import { forwardRef, type ReactNode } from 'react';
 import { useMergeRefs } from '@floating-ui/react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/cn';
+import { ChevronDownIcon } from '../../icons';
 import { useSelectContext } from './select';
 
 /* -------------------------------------------------------------------------------------------------
@@ -98,27 +99,5 @@ function SelectValue({
 }
 
 SelectValue.displayName = 'SelectValue';
-
-/* -------------------------------------------------------------------------------------------------
- * ChevronDownIcon (inline SVG — no lucide-react dependency)
- * -----------------------------------------------------------------------------------------------*/
-
-function ChevronDownIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className={className}
-    >
-      <polyline points="6 9 12 15 18 9" />
-    </svg>
-  );
-}
 
 export { SelectTrigger, SelectValue, selectTriggerVariants };
