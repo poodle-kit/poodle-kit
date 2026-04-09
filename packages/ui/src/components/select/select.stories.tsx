@@ -334,6 +334,33 @@ const FRUITS = [
   'Raspberry',
   'Strawberry',
   'Watermelon',
+  'Apple',
+  'Apricot',
+  'Avocado',
+  'Banana',
+  'Blueberry',
+  'Cherry',
+  'Coconut',
+  'Durian',
+  'Fig',
+  'Grape',
+  'Guava',
+  'Kiwi',
+  'Lemon',
+  'Lime',
+  'Lychee',
+  'Mango',
+  'Melon',
+  'Orange',
+  'Papaya',
+  'Peach',
+  'Pear',
+  'Pineapple',
+  'Plum',
+  'Pomegranate',
+  'Raspberry',
+  'Strawberry',
+  'Watermelon',
 ];
 
 export const ManyItems: Story = {
@@ -342,7 +369,7 @@ export const ManyItems: Story = {
       <SelectTrigger className="w-48">
         <SelectValue placeholder="과일 선택..." />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="max-h-50 overflow-y-auto">
         {FRUITS.map((fruit) => (
           <SelectItem key={fruit} value={fruit.toLowerCase()}>
             {fruit}
