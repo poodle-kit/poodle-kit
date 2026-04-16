@@ -9,8 +9,9 @@
     "outDir": "dist",
     "lib": ["DOM", "ES2019"],
     "skipLibCheck": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "types": ["node"]
   },
-  "include": ["src"],
+  "include": ["src", "tsup.config.ts"],
   "exclude": ["node_modules", "dist", "**/*.stories.tsx"]
 }
