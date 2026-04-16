@@ -46,3 +46,11 @@ export const XIcon = createIcon(
   </>,
   12,
 );
+
+export const CheckIcon = createIcon(
+  <polyline points="20 6 9 18 4 13" />,
+);
+
+export const ChevronDownIcon = createIcon(
+  <polyline points="6 9 12 15 18 9" />,
+);
