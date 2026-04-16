@@ -8,6 +8,7 @@ export default defineConfig({
     'src/components/button/button.tsx',
     'src/components/image-uploader/image-uploader.tsx',
     'src/components/select/select.tsx',
+    'src/components/toast/toaster.tsx',
     'src/theme/index.ts',
     'src/lib/cn.ts',
   ],

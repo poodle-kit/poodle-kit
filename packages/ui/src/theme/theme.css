@@ -108,3 +108,20 @@
   --color-input: oklch(0.27 0 0);
   --color-ring: oklch(0.98 0 0);
 }
+
+/* ==================== Animations ==================== */
+
+@keyframes toast-enter {
+  from { opacity: 0; transform: translateY(0.5rem) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes toast-exit {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to   { opacity: 0; transform: translateY(0.5rem) scale(0.96); }
+}
+
+@theme {
+  --animate-toast-enter: toast-enter 0.2s ease-out;
+  --animate-toast-exit: toast-exit 0.3s ease-in forwards;
+}
