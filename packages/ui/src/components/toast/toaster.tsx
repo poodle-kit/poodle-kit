@@ -37,6 +37,7 @@ const positionClasses: Record<ToastPosition, string> = {
  * useSyncExternalStore의 server snapshot에서 null을 반환해 SSR 시 portal을 건너뛴다.
  */
 const noopSubscribe = () => () => {};
+const EMPTY_TOASTS: Toast[] = [];
 
 export function Toaster({
   position = 'bottom-right',
@@ -54,7 +55,7 @@ export function Toaster({
   const toasts = useSyncExternalStore<Toast[]>(
     subscribe,
     store.getToasts,
-    () => [], // SSR snapshot: 서버에서는 빈 배열
+    () => EMPTY_TOASTS, // SSR snapshot: 서버에서는 빈 배열
   );
 
   // SSR 안전: server에서는 null, client에서만 document.body 반환
